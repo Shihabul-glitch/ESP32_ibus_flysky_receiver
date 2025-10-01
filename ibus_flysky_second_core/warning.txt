@@ -1,0 +1,7 @@
+# There may be a problem because of using the dual core:
+It is possible that when the second core is modifying the channel[] value the first core will access that variable in a semi-modified state. 
+Thus the first core will get a false value.
+
+This problem is known as "Torn Read" problem. To solve this we can use the xQueueSend() and xQueueReceive() of freeRTOS. 
+
+Note: I have observed the ibus reading from the main core for a long time. And did not find any issue like "Torn Read" . But it is possible to occur. 
